@@ -1,4 +1,4 @@
-# Kanged From @TroJanZheX
+# @tgnvs
 import asyncio
 import re
 import ast
@@ -83,12 +83,15 @@ async def next_page(bot, query):
             for file in files
         ]
 
-    if 0 < offset <= 10:
+    if 0 < offset <= 6:
         off_set = 0
     elif offset == 0:
         off_set = None
     else:
-        off_set = offset - 10
+        off_set = offset - 6
+          btn.append(
+    [InlineKeyboardButton(text="⚡Join Telegram Channal⚡", url='https://t.me/tgnvs')]
+)
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("◀️ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
@@ -135,7 +138,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('')
+            k = await query.message.edit("<b>💌 ᴛʜɪs ᴍᴏᴠɪᴇ ɪs ɴᴏᴛ ʏᴇᴛ ʀᴇʟᴇᴀsᴇᴅ ᴏʀ ᴀᴅᴅᴇᴅ ᴛᴏ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ 💌</b>\n› <a href=https://t.me/nvsmovielink><b>Ask Admins to add in this group.</b></a>", disable_web_page_preview=True)
             await asyncio.sleep(10)
             await k.delete()
 
@@ -366,7 +369,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 )
                 await query.answer('Check PM, I have sent files in pm', show_alert=True)
         except UserIsBlocked:
-            await query.answer('Unblock the bot mahn !', show_alert=True)
+            await query.answer('Unblock Me Please!', show_alert=True)
         except PeerIdInvalid:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
@@ -404,11 +407,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕ 𝙰𝚍𝚍 𝙼𝚎 𝚃𝚘 𝚈𝚘𝚞𝚛 𝙶𝚛𝚘𝚞𝚙𝚜 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-        ], [
-            InlineKeyboardButton('🔍 𝚂𝚎𝚊𝚛𝚌𝚑', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 𝚄𝚙𝚍𝚊𝚝𝚎𝚜', url='https://t.me/sources_cods')
-        ], [
+           InlineKeyboardButton('〽️ 𝙐𝙥𝙙𝙖𝙩𝙚𝙨', url='https://t.me/tgnvs')
+            ],[
+            InlineKeyboardButton('🎬 𝙈𝙤𝙫𝙞𝙚 𝘾𝙝𝙖𝙣𝙣𝙚𝙡', url='https://t.me/nvsmovielink')
+            ],[
             InlineKeyboardButton('ℹ️ 𝙷𝚎𝚕𝚙', callback_data='help'),
             InlineKeyboardButton('😊 𝙰𝚋𝚘𝚞𝚝', callback_data='about')
         ]]
@@ -438,8 +440,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons = [[
-            InlineKeyboardButton('🤖 𝚄𝚙𝚍𝚊𝚝𝚎𝚜', url='https://t.me/sources_cods'),
-            InlineKeyboardButton('♥️ Source', callback_data='source')
+            InlineKeyboardButton('♥️ Donation', callback_data='source')
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('🔐 Close', callback_data='close_data')
@@ -660,7 +661,9 @@ async def auto_filter(client, msg, spoll=False):
             ]
             for file in files
         ]
-
+ btn.append(
+    [InlineKeyboardButton(text="⚡Join Movie Channal⚡", url='https://t.me/nvsmovielink')]
+)
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
@@ -708,7 +711,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>📁 Found</b> {total_results} <b>Files For</b> {search} \n\n<i>⚡ Uploaded By</i> @MOVIES_ZILAA"
+        cap = f"<b>📁 Found</b> {total_results} <b>Files For</b> {search} \n\n<i>⚡ Uploaded By</i> @nvsmovielink"
     if imdb and imdb.get('poster'):
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
